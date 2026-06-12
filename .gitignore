@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+laporan*/
+cikm-2020-hands-on-session-for-multi-model-queries-master*/

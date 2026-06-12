@@ -1,0 +1,101 @@
+id_dokter,nama,spesialisasi,no_telepon
+D-001,dr. Dokter_1,Umum,08136329070
+D-002,dr. Dokter_2,Umum,08133187367
+D-003,dr. Dokter_3,Anak,08132174812
+D-004,dr. Dokter_4,Anak,08139577517
+D-005,dr. Dokter_5,Anak,08135843103
+D-006,dr. Dokter_6,Umum,08132034569
+D-007,dr. Dokter_7,Neurologi,08137972760
+D-008,dr. Dokter_8,Bedah,08132478612
+D-009,dr. Dokter_9,Neurologi,08134704472
+D-010,dr. Dokter_10,Neurologi,08135156050
+D-011,dr. Dokter_11,Kardiologi,08139495737
+D-012,dr. Dokter_12,Anak,08131976703
+D-013,dr. Dokter_13,Anak,08138902533
+D-014,dr. Dokter_14,Bedah,08134214430
+D-015,dr. Dokter_15,Neurologi,08133463920
+D-016,dr. Dokter_16,Bedah,08135166002
+D-017,dr. Dokter_17,Anak,08137154890
+D-018,dr. Dokter_18,Bedah,08135811959
+D-019,dr. Dokter_19,Umum,08134068622
+D-020,dr. Dokter_20,Umum,08139457527
+D-021,dr. Dokter_21,Neurologi,08134733777
+D-022,dr. Dokter_22,Anak,08133820041
+D-023,dr. Dokter_23,Umum,08131477487
+D-024,dr. Dokter_24,Umum,08131575855
+D-025,dr. Dokter_25,Neurologi,08138160270
+D-026,dr. Dokter_26,Anak,08139916976
+D-027,dr. Dokter_27,Bedah,08136934021
+D-028,dr. Dokter_28,Umum,08132318043
+D-029,dr. Dokter_29,Anak,08131118595
+D-030,dr. Dokter_30,Umum,08132795148
+D-031,dr. Dokter_31,Kardiologi,08137651643
+D-032,dr. Dokter_32,Neurologi,08131095482
+D-033,dr. Dokter_33,Anak,08131610696
+D-034,dr. Dokter_34,Umum,08138197710
+D-035,dr. Dokter_35,Penyakit Dalam,08138864525
+D-036,dr. Dokter_36,Neurologi,08131821337
+D-037,dr. Dokter_37,Penyakit Dalam,08138841827
+D-038,dr. Dokter_38,Umum,08138725021
+D-039,dr. Dokter_39,Umum,08139851526
+D-040,dr. Dokter_40,Kardiologi,08135011122
+D-041,dr. Dokter_41,Umum,08137426923
+D-042,dr. Dokter_42,Umum,08133511758
+D-043,dr. Dokter_43,Penyakit Dalam,08132169693
+D-044,dr. Dokter_44,Neurologi,08134643480
+D-045,dr. Dokter_45,Kardiologi,08134122604
+D-046,dr. Dokter_46,Umum,08134209797
+D-047,dr. Dokter_47,Umum,08134592217
+D-048,dr. Dokter_48,Anak,08139846725
+D-049,dr. Dokter_49,Neurologi,08132108262
+D-050,dr. Dokter_50,Umum,08133283567
+D-051,dr. Dokter_51,Kardiologi,08135397801
+D-052,dr. Dokter_52,Penyakit Dalam,08133090700
+D-053,dr. Dokter_53,Neurologi,08134589294
+D-054,dr. Dokter_54,Anak,08139933422
+D-055,dr. Dokter_55,Bedah,08131047120
+D-056,dr. Dokter_56,Neurologi,08138068242
+D-057,dr. Dokter_57,Kardiologi,08134121098
+D-058,dr. Dokter_58,Kardiologi,08139148751
+D-059,dr. Dokter_59,Penyakit Dalam,08133914001
+D-060,dr. Dokter_60,Kardiologi,08137726916
+D-061,dr. Dokter_61,Umum,08134663520
+D-062,dr. Dokter_62,Kardiologi,08139754658
+D-063,dr. Dokter_63,Bedah,08135695287
+D-064,dr. Dokter_64,Penyakit Dalam,08131349426
+D-065,dr. Dokter_65,Kardiologi,08135368451
+D-066,dr. Dokter_66,Neurologi,08131031546
+D-067,dr. Dokter_67,Penyakit Dalam,08134221166
+D-068,dr. Dokter_68,Penyakit Dalam,08137389076
+D-069,dr. Dokter_69,Kardiologi,08133627023
+D-070,dr. Dokter_70,Neurologi,08132201609
+D-071,dr. Dokter_71,Anak,08134228209
+D-072,dr. Dokter_72,Penyakit Dalam,08134890374
+D-073,dr. Dokter_73,Bedah,08136776880
+D-074,dr. Dokter_74,Neurologi,08137908297
+D-075,dr. Dokter_75,Umum,08135730713
+D-076,dr. Dokter_76,Anak,08136853912
+D-077,dr. Dokter_77,Penyakit Dalam,08136602174
+D-078,dr. Dokter_78,Bedah,08136848607
+D-079,dr. Dokter_79,Anak,08139762843
+D-080,dr. Dokter_80,Penyakit Dalam,08137986279
+D-081,dr. Dokter_81,Kardiologi,08134599516
+D-082,dr. Dokter_82,Neurologi,08135222643
+D-083,dr. Dokter_83,Anak,08139567242
+D-084,dr. Dokter_84,Neurologi,08134649751
+D-085,dr. Dokter_85,Bedah,08137905693
+D-086,dr. Dokter_86,Bedah,08137185105
+D-087,dr. Dokter_87,Penyakit Dalam,08132518531
+D-088,dr. Dokter_88,Kardiologi,08138788914
+D-089,dr. Dokter_89,Penyakit Dalam,08136732721
+D-090,dr. Dokter_90,Neurologi,08135692488
+D-091,dr. Dokter_91,Anak,08137942890
+D-092,dr. Dokter_92,Anak,08138853901
+D-093,dr. Dokter_93,Penyakit Dalam,08132136823
+D-094,dr. Dokter_94,Neurologi,08138677703
+D-095,dr. Dokter_95,Bedah,08135050590
+D-096,dr. Dokter_96,Umum,08139503958
+D-097,dr. Dokter_97,Kardiologi,08133492471
+D-098,dr. Dokter_98,Anak,08133650390
+D-099,dr. Dokter_99,Anak,08135324581
+D-100,dr. Dokter_100,Kardiologi,08132624791

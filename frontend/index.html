@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA System - RS Sehat Selalu</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; display: flex; justify-content: center; height: 100vh; padding: 20px; }
+        .container { width: 100%; max-width: 800px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* Header & Stats Bar */
+        header { background: linear-gradient(135deg, #007bff, #00c6ff); color: white; padding: 20px; text-align: center; }
+        .stats-bar { display: flex; justify-content: center; gap: 15px; padding: 15px; background: #eef2f5; border-bottom: 1px solid #ddd; flex-wrap: wrap; }
+        .stat-card { background: white; padding: 10px 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; min-width: 100px; }
+        .stat-card h3 { color: #007bff; margin-bottom: 5px; }
+        .stat-card p { font-size: 0.9em; color: #555; }
+
+        /* Quick Buttons */
+        .quick-buttons { padding: 15px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; border-bottom: 1px solid #ddd; }
+        .quick-btn { background: white; border: 1px solid #007bff; color: #007bff; padding: 8px 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-size: 0.9em; }
+        .quick-btn:hover { background: #007bff; color: white; }
+
+        /* Chatbox */
+        .chatbox { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #fafafa; }
+        .message { max-width: 80%; padding: 12px 18px; border-radius: 15px; line-height: 1.5; font-size: 0.95em; white-space: pre-wrap; }
+        .bot-msg { background: #e9ecef; color: #333; align-self: flex-start; border-bottom-left-radius: 0; }
+        .user-msg { background: #007bff; color: white; align-self: flex-end; border-bottom-right-radius: 0; }
+        
+        /* Input Area */
+        .input-area { display: flex; padding: 15px; background: white; border-top: 1px solid #ddd; }
+        .input-area input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 5px; outline: none; font-size: 1em; }
+        .input-area button { background: #007bff; color: white; border: none; padding: 0 20px; margin-left: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .input-area button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2>QA System — Rumah Sakit Sehat Selalu</h2>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-card"><h3 id="stat-pasien">...</h3><p>Pasien</p></div>
+        <div class="stat-card"><h3 id="stat-dokter">...</h3><p>Dokter</p></div>
+        <div class="stat-card"><h3 id="stat-kunjungan">...</h3><p>Kunjungan</p></div>
+        <div class="stat-card"><h3 id="stat-obat">...</h3><p>Obat</p></div>
+        <div class="stat-card"><h3 id="stat-tagihan">...</h3><p>Tagihan</p></div>
+    </div>
+
+    <div class="quick-buttons">
+        <button class="quick-btn" onclick="sendMsg('Tampilkan daftar pasien')">Daftar Pasien</button>
+        <button class="quick-btn" onclick="sendMsg('Siapa dokter spesialis kardiologi?')">Dokter Kardiologi</button>
+        <button class="quick-btn" onclick="sendMsg('Tampilkan semua tagihan')">Semua Tagihan</button>
+        <button class="quick-btn" onclick="sendMsg('Tampilkan statistik rumah sakit')">Statistik</button>
+        <button class="quick-btn" onclick="sendMsg('Berapa estimasi pasien minggu depan?')" style="background:#28a745; color:white; border-color:#28a745;">🔮 Prediksi Pasien</button>
+    </div>
+
+    <div class="chatbox" id="chatbox">
+        <div class="message bot-msg">Halo! Saya adalah asisten QA Rumah Sakit Sehat Selalu. Ada yang bisa saya bantu hari ini?</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Ketik pertanyaan Anda di sini..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMsg()">Kirim</button>
+    </div>
+</div>
+
+<script>
+    // Memuat angka statistik
+    window.onload = async function() {
+        try {
+            const res = await fetch('http://localhost:8000/stats');
+            const data = await res.json();
+            document.getElementById('stat-pasien').innerText = data.pasien;
+            document.getElementById('stat-dokter').innerText = data.dokter;
+            document.getElementById('stat-kunjungan').innerText = data.kunjungan;
+            document.getElementById('stat-obat').innerText = data.obat;
+            document.getElementById('stat-tagihan').innerText = data.tagihan;
+        } catch (error) {
+            console.error("Gagal memuat statistik", error);
+        }
+    };
+
+    // PENGHITUNG BARU: Mustahil kembar
+    let msgCounter = 0; 
+
+    async function sendMsg(presetText) {
+        const inputField = document.getElementById('userInput');
+        let text = "";
+        
+        if (typeof presetText === 'string' && presetText.trim() !== '') {
+            text = presetText;
+        } else {
+            text = inputField.value.trim();
+        }
+        
+        if (!text) return;
+
+        // 1. Memunculkan pesan pengguna (biru)
+        appendMessage('user', text);
+        inputField.value = '';
+
+        // 2. Memunculkan pesan loading
+        const loadingId = appendMessage('bot', 'Sedang mencari jawaban...');
+
+        try {
+            const response = await fetch('http://localhost:8000/tanya', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: text })
+            });
+            
+            const data = await response.json();
+            
+            // 3. Menghapus pesan loading dengan target ID yang pasti benar
+            const loadingElement = document.getElementById(loadingId);
+            if (loadingElement) loadingElement.remove();
+            
+            let formattedAnswer = data.jawaban.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+            appendMessage('bot', formattedAnswer);
+            
+        } catch (error) {
+            const loadingElement = document.getElementById(loadingId);
+            if (loadingElement) loadingElement.remove();
+            appendMessage('bot', 'Maaf, terjadi kesalahan koneksi ke server.');
+        }
+    }
+
+    function appendMessage(sender, text) {
+        msgCounter++; // Angka bertambah setiap kali pesan dibuat
+        const chatbox = document.getElementById('chatbox');
+        const msgDiv = document.createElement('div');
+        
+        const msgId = 'msg-' + msgCounter; // Menghasilkan ID: msg-1, msg-2, dst.
+        msgDiv.id = msgId;
+        msgDiv.className = 'message ' + (sender === 'user' ? 'user-msg' : 'bot-msg');
+        msgDiv.innerHTML = text; 
+        
+        chatbox.appendChild(msgDiv);
+        chatbox.scrollTop = chatbox.scrollHeight;
+        return msgId;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+            sendMsg();
+        }
+    }
+</script>
+
+</body>
+</html>
