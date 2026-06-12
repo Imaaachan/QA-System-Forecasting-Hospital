@@ -31,17 +31,22 @@ pip install fastapi uvicorn opensearch-py pandas scikit-learn
 Buka terminal pada folder root (folder utama) proyek ini, dan jalankan skrip berikut untuk memasukkan data ke OpenSearch:
 
 Bash
+
 Memasukkan data statis (pasien, dokter, tagihan, obat)
+
 python backend/load_data.py
 
 Menjalankan model peramalan dan memuat prediksi ke OpenSearch
+
 python backend/forecast_and_load.py
 
 3. Menjalankan Backend Server
 Jalankan server FastAPI menggunakan Uvicorn dari root folder:
 
 Bash
+
 python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+
 (Server akan berjalan dan menunggu koneksi API pada port 8000).
 
 4. Menjalankan Frontend
